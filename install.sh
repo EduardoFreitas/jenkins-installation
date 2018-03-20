@@ -6,6 +6,12 @@ wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.r
 rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 yum install docker nginx git jenkins -y
 
+# update Java 8 for jenkins
+yum install -y java-1.8.0-openjdk.x86_64
+/usr/sbin/alternatives --set java /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
+/usr/sbin/alternatives --set javac /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/javac
+sudo yum remove java-1.7
+
 service docker start
 
 usermod -a -G docker ec2-user
