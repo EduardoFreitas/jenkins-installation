@@ -10,7 +10,11 @@ yum install docker nginx git jenkins -y
 yum install -y java-1.8.0-openjdk.x86_64
 /usr/sbin/alternatives --set java /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
 /usr/sbin/alternatives --set javac /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/javac
-sudo yum remove java-1.7
+
+# install git
+yum install git
+
+yum remove java-1.7
 
 service docker start
 
@@ -47,3 +51,4 @@ service nginx start
 
 chkconfig jenkins on
 chkconfig nginx on
+git --version
